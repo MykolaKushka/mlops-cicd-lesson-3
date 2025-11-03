@@ -72,5 +72,6 @@ rm -rf ~/.cache/torch
 
 ## Author
 **Кушка Микола**  
-ITGo Data Science and Data Analytics — Lesson 3  
+GOIT Data Science and Data Analytics — Lesson 3  
 Autumn 2025
+
