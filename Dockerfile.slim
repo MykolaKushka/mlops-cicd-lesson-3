@@ -1,0 +1,19 @@
+# === SLIM IMAGE ===
+FROM python:3.9-slim
+
+# Встановлюємо лише мінімально необхідні пакети
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Встановлюємо лише PyTorch і Pillow для інференсу (без зайвих бібліотек)
+RUN pip install --no-cache-dir torch torchvision pillow
+
+# Створюємо робочу директорію
+WORKDIR /app
+
+# Копіюємо лише те, що потрібно для запуску моделі
+COPY model.pt inference.py /app/
+
+# Запуск інференсу при старті контейнера
+CMD ["python", "inference.py"]
